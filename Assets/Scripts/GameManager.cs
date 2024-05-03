@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager current;
+    public static string playerName;
     public float raceTime { get; private set; } = 0;
     public int laps { get; private set; } = -1;
     [field:SerializeField]
@@ -11,7 +12,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0f;
         current = this;  
     }
 

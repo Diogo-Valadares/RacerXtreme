@@ -11,13 +11,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu, hud, GameoverMenu;
     public TextMeshProUGUI points, laps, time;
+    public TMP_InputField nameInput;
 
     public void Start()
     {
+        Time.timeScale = 1;
         current = this;
-        play.onClick.AddListener(Play);
-        pause.onClick.AddListener(Pause);
-        restart.onClick.AddListener(Restart);
     }
 
     public void Play()
@@ -43,6 +42,16 @@ public class UIManager : MonoBehaviour
         hud.SetActive(false);
         GameoverMenu.SetActive(true);
         GameoverMenu.GetComponent<EndScreen>().CalculateScore();
+    }
+
+    public void StartGame()
+    {
+        GameManager.playerName = nameInput.text;
+        SceneManager.LoadScene(1);
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
     public void Quit()
     {
